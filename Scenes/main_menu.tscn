@@ -1,0 +1,199 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0kysbw474wqn"]
+
+[sub_resource type="Gradient" id="Gradient_fm03v"]
+colors = PackedColorArray(0.815686, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_obgld"]
+gradient = SubResource("Gradient_fm03v")
+fill = 1
+fill_from = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_0kjcs"]
+offsets = PackedFloat32Array(0, 0.538961, 1)
+colors = PackedColorArray(1, 0.576471, 1, 1, 0.917647, 0.227451, 0.780392, 1, 1, 0.498039, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_47rpu"]
+gradient = SubResource("Gradient_0kjcs")
+
+[sub_resource type="Gradient" id="Gradient_a1mkl"]
+offsets = PackedFloat32Array(0, 0.538961, 1)
+colors = PackedColorArray(1, 0.576471, 1, 1, 0.917647, 0.227451, 0.780392, 1, 1, 0.498039, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_knwxd"]
+gradient = SubResource("Gradient_a1mkl")
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainBackground" type="TextureRect" parent="MainContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_obgld")
+
+[node name="MainMargin" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Buttons" type="VBoxContainer" parent="MainContainer/MainMargin"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/MainMargin/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Play" type="Button" parent="MainContainer/MainMargin/Buttons" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainContainer/MainMargin/Buttons" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainContainer/MainMargin/Buttons" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Credits"
+
+[node name="Exit" type="Button" parent="MainContainer/MainMargin/Buttons" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Exit"
+
+[node name="SettingsMenu" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMargin" type="MarginContainer" parent="SettingsMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="SettingsBackground" type="TextureRect" parent="SettingsMenu/SettingsMargin"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_47rpu")
+
+[node name="SettingsPadding" type="MarginContainer" parent="SettingsMenu/SettingsMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Buttons" type="VBoxContainer" parent="SettingsMenu/SettingsMargin/SettingsPadding"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="FullscreenRow" type="HBoxContainer" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/FullscreenRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/FullscreenRow"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+
+[node name="MasterVolumeRow" type="VBoxContainer" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+
+[node name="MasterVolume" type="Label" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MasterVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main"
+
+[node name="MasterSlider" type="HSlider" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MasterVolumeRow"]
+layout_mode = 2
+
+[node name="MusicVolumeRow" type="VBoxContainer" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MusicVolumeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MusicVolumeRow"]
+layout_mode = 2
+
+[node name="SFXVolumeRow2" type="VBoxContainer" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/SFXVolumeRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/SFXVolumeRow2"]
+layout_mode = 2
+
+[node name="Fill" type="Control" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Close" type="Button" parent="SettingsMenu/SettingsMargin/SettingsPadding/Buttons" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Close"
+
+[node name="Credits" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsMargin" type="MarginContainer" parent="Credits"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="CreditsBackground" type="TextureRect" parent="Credits/CreditsMargin"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_knwxd")
+
+[node name="CreditsPadding" type="MarginContainer" parent="Credits/CreditsMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Credits/CreditsMargin/CreditsPadding"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Credits/CreditsMargin/CreditsPadding/Content"]
+layout_mode = 2
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/CreditsMargin/CreditsPadding/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "AAAAAAAA
+"
+
+[node name="Close" type="Button" parent="Credits/CreditsMargin/CreditsPadding/Content" groups=["MenuButtons"]]
+layout_mode = 2
+text = "Close"
