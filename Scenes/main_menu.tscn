@@ -220,7 +220,7 @@ stream = ExtResource("3_hng3u")
 autoplay = true
 bus = &"Music"
 
-[connection signal="visibility_changed" from="SettingsMenu" to="SettingsMenu" method="_on_visibility_changed"]
+[connection signal="toggled" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/FullscreenRow/FullscreenToggle" to="SettingsMenu" method="_on_fullscreen_toggle_toggled"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MasterVolumeRow/MasterSlider" to="SettingsMenu" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MusicVolumeRow/MusicSlider" to="SettingsMenu" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/SFXVolumeRow2/SFXSlider" to="SettingsMenu" method="_on_sfx_slider_value_changed"]

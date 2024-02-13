@@ -27,3 +27,16 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_close_pressed():
 	hide();
 	options_closed.emit();
+
+func _on_fullscreen_toggle_toggled(toggled_on):
+	var window = get_window();
+	var screen_size = DisplayServer.screen_get_size();
+	
+	if(toggled_on):
+		window.mode = Window.MODE_FULLSCREEN;
+	else:
+		window.mode = Window.MODE_WINDOWED;
+		window.size = Vector2i(screen_size.x - 66, screen_size.y - 1);
+		window.position = Vector2i(
+			(screen_size.x - window.size.x)*0.5, 
+			(screen_size.y - window.size.y) + 200);
