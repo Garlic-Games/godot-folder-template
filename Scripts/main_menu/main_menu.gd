@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var credits: PanelContainer = %Credits
 
 func start_game() -> void:
-	
 	pass
 
 func open_settings() -> void:
@@ -12,3 +11,6 @@ func open_settings() -> void:
 
 func open_credits() -> void:
 	credits.show();
+
+func close_game() -> void:
+	get_tree().quit();

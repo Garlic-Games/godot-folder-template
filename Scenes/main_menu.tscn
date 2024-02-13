@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0kysbw474wqn"]
+[gd_scene load_steps=12 format=3 uid="uid://c0kysbw474wqn"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_7w5a6"]
 [ext_resource type="Script" path="res://scripts/main_menu/settings.gd" id="2_norup"]
-[ext_resource type="AudioStream" uid="uid://dny66k8gw1dwu" path="res://art/music/Intro options screen .mp3" id="3_hng3u"]
+[ext_resource type="AudioStream" uid="uid://dny66k8gw1dwu" path="res://art/music/main_menu/Intro options screen .mp3" id="3_hng3u"]
+[ext_resource type="Script" path="res://scripts/main_menu/credits.gd" id="3_q8u6c"]
+[ext_resource type="PackedScene" uid="uid://dk0dddmpl201" path="res://prefabs/stream_utilities/button_group_sound_when_signal.tscn" id="4_nwlex"]
 
 [sub_resource type="Gradient" id="Gradient_fm03v"]
 colors = PackedColorArray(0.815686, 0, 0, 1, 1, 1, 1, 1)
@@ -72,6 +74,7 @@ text = "Exit"
 
 [node name="SettingsMenu" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -171,12 +174,12 @@ text = "Close"
 
 [node name="Credits" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_q8u6c")
 
 [node name="CreditsMargin" type="MarginContainer" parent="Credits"]
 layout_mode = 2
@@ -220,8 +223,19 @@ stream = ExtResource("3_hng3u")
 autoplay = true
 bus = &"Music"
 
+[node name="ButtonSounds" type="Node" parent="."]
+
+[node name="ButtonsMouseEnteredSound" parent="ButtonSounds" instance=ExtResource("4_nwlex")]
+button_group_name = "MenuButtons"
+signal_name = "mouse_entered"
+
+[connection signal="pressed" from="MainContainer/MainMargin/Buttons/Settings" to="." method="open_settings"]
+[connection signal="pressed" from="MainContainer/MainMargin/Buttons/Credits" to="." method="open_credits"]
+[connection signal="pressed" from="MainContainer/MainMargin/Buttons/Exit" to="." method="close_game"]
 [connection signal="toggled" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/FullscreenRow/FullscreenToggle" to="SettingsMenu" method="_on_fullscreen_toggle_toggled"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MasterVolumeRow/MasterSlider" to="SettingsMenu" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/MusicVolumeRow/MusicSlider" to="SettingsMenu" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/SFXVolumeRow2/SFXSlider" to="SettingsMenu" method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="SettingsMenu/SettingsMargin/SettingsPadding/Buttons/Close" to="SettingsMenu" method="_on_close_pressed"]
+[connection signal="meta_clicked" from="Credits/CreditsMargin/CreditsPadding/Content/RichTextLabel" to="Credits" method="open_link"]
+[connection signal="pressed" from="Credits/CreditsMargin/CreditsPadding/Content/Close" to="Credits" method="_on_back_pressed"]
