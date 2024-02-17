@@ -1,6 +1,8 @@
-extends PanelContainer
+class_name Credits;
+extends PanelContainer;
 
-signal credits_closed;
+signal opened;
+signal closed;
 
 func _ready():
 	hide();
@@ -8,6 +10,10 @@ func _ready():
 func open_link(link: String) -> void:
 	OS.shell_open(link);
 
-func _on_back_pressed() -> void:
+func open() -> void:
+	opened.emit();
+	show();
+
+func close():
+	closed.emit();
 	hide();
-	credits_closed.emit();
