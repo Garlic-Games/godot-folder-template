@@ -18,6 +18,15 @@ config/icon="res://icon.svg"
 
 SceneLoader="*res://scripts/autoloads/scene_loader.gd"
 
+[file_customization]
+
+folder_colors={
+"res://art/": "green",
+"res://prefabs/": "yellow",
+"res://scenes/": "red",
+"res://scripts/": "blue"
+}
+
 [input]
 
 pause={
