@@ -1,5 +1,5 @@
 class_name ConfirmMenu;
-extends MarginContainer
+extends PanelContainer;
 
 signal selection(choice: bool);
 signal opened;

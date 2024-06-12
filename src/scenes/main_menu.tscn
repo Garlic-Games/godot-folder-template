@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0kysbw474wqn"]
+[gd_scene load_steps=7 format=3 uid="uid://c0kysbw474wqn"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_7w5a6"]
 [ext_resource type="PackedScene" uid="uid://bms34wbd0mko4" path="res://prefabs/menu/settings_menu.tscn" id="2_eli5e"]
@@ -6,14 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://crxdwuvlnrsuk" path="res://prefabs/menu/credits.tscn" id="3_juipk"]
 [ext_resource type="PackedScene" uid="uid://dk0dddmpl201" path="res://prefabs/stream_utilities/button_group_sound_when_signal.tscn" id="4_nwlex"]
 [ext_resource type="PackedScene" uid="uid://dcxkowmduxb5y" path="res://prefabs/menu/loading_panel.tscn" id="7_y4405"]
-
-[sub_resource type="Gradient" id="Gradient_fm03v"]
-colors = PackedColorArray(0.815686, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_obgld"]
-gradient = SubResource("Gradient_fm03v")
-fill = 1
-fill_from = Vector2(0.5, 0)
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_7w5a6")
@@ -26,10 +18,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainBackground" type="TextureRect" parent="MainContainer"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_obgld")
-
 [node name="MainMargin" type="MarginContainer" parent="MainContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -39,6 +27,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Buttons" type="VBoxContainer" parent="MainContainer/MainMargin"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/MainMargin/Buttons"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Godot folder template"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Spacer" type="Control" parent="MainContainer/MainMargin/Buttons"]
 layout_mode = 2
@@ -62,12 +58,15 @@ text = "Exit"
 
 [node name="Credits" parent="." instance=ExtResource("3_juipk")]
 unique_name_in_owner = true
+visible = false
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_eli5e")]
 unique_name_in_owner = true
+visible = false
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hng3u")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
@@ -79,6 +78,7 @@ signal_name = "mouse_entered"
 
 [node name="LoadingPanel" parent="." instance=ExtResource("7_y4405")]
 unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="MainContainer/MainMargin/Buttons/Play" to="." method="start_game"]
 [connection signal="pressed" from="MainContainer/MainMargin/Buttons/Settings" to="." method="open_settings"]
