@@ -13,3 +13,6 @@ export_presets.cfg
 src/.mono/
 src/data_*/
 mono_crash.*.json
+
+# Exported builds
+export/*
