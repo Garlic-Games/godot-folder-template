@@ -4,7 +4,7 @@ extends PanelContainer;
 
 func _ready():
 	SceneLoader.load_start.connect(open);
-	SceneLoader.upate_func = update_progress;
+	SceneLoader.load_update.connect(update_progress);
 	SceneLoader.load_end.connect(close);
 	hide();
 
