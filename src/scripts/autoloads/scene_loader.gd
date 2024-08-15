@@ -6,15 +6,18 @@ signal load_end;
 
 var is_loading_scene = false;
 var current_resource_load: String;
+var upate_func: Callable;
 
 func _process(_delta):
 	if is_loading_scene:
 		assert(current_resource_load != "", "No reource path is being loaded and something its being loaded");
 		var progress = []; # Vaya basura de implementación, viene a ser un array de salida,
-						   # en c# seria load_threaded_get_status(gameplay.resource_path, out progress); 
+						   # en c# seria load_threaded_get_status(gameplay.resource_path, out progress);
 		match ResourceLoader.load_threaded_get_status(current_resource_load, progress):
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_IN_PROGRESS:
-				load_update.emit(progress[0]);
+				load_update.emit();
+				if upate_func:
+					upate_func.call(progress[0]);
 			ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 				_load_ended();
 

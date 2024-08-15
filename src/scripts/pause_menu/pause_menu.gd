@@ -48,4 +48,3 @@ func choose_main_menu(choice: bool) -> void:
 		SceneLoader.load_scene(main_menu_scene);
 	else:
 		main_menu_confirm_menu.close();
-
